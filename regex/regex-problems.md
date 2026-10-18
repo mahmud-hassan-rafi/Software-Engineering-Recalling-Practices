@@ -29,7 +29,7 @@ console.log(matchedResult)
 ```
 ### output
 ```js
-    [
+[
   {
     status: 'SUCCESS',
     date: '2026-10-17',
@@ -66,6 +66,42 @@ console.log(matchedResult)
     amount: '950',
     transactionId: 'TX-1028'
   }
+]
+```
+
+## Problem: Tricky Pattern Matching
+
+### code
+```js
+const text = `
+sakib@outlook.co.uk
+rafi@gmail.com
+rafi123@yahoo.com
+rafi.dev@skill-.com
+rafi.dev@skill-bridge.com
+rafi.dev@skill-.com
+rafi..dev@skill-bridge.com
+rafi.dev@skill-bridge-client.com
+rafi@@gmail.com
+rafi.@gmail.com
+@nabil.com
+hasan@gmail
+`;
+
+const emailValidationRegex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*\@[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:\.[a-zA-Z]{2,})+$/gm
+
+const validEmails = [...text.matchAll(emailValidationRegex)].map(email => email[0])
+
+console.log(validEmails)
+```
+### output
+```js
+[
+  'sakib@outlook.co.uk',
+  'rafi@gmail.com',
+  'rafi123@yahoo.com',
+  'rafi.dev@skill-bridge.com',
+  'rafi.dev@skill-bridge-client.com'
 ]
 ```
 
